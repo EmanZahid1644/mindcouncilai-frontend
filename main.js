@@ -1,4 +1,4 @@
-const backendURL = 'https://mindcouncil-backend.onrender.com';
+const backendURL = 'https://mindcouncil-ai.onrender.com';
 
 document.addEventListener('DOMContentLoaded', () => {
     const dashboard = document.getElementById('dashboard-content');
@@ -383,3 +383,4 @@ function rotateQuotes() {
 }
 
 rotateQuotes();
+
