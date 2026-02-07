@@ -125,12 +125,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     const res = await fetch(`${backendURL}/dilemma-input`, {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({ dilemma: dilemmaText })
+                        body: JSON.stringify({ thought: dilemmaText })
                     });
                     const data = await res.json();
-                    if (res.ok && data.raw_dilemma) {
+                    if (res.ok && (data.raw_text || data.raw_dilemma)) {
                         showSuccess('dilemma-output', 'Request saved!');
-                        document.getElementById('dilemma-output').innerHTML += wrapCard(`<div class="text-base mt-2">${data.raw_dilemma}</div>`);
+                        document.getElementById('dilemma-output').innerHTML += wrapCard(`<div class="text-base mt-2">${data.raw_text || data.raw_dilemma}</div>`);
                     } else {
                         showError('dilemma-output', 'Not saved!<br>' + JSON.stringify(data));
                     }
@@ -383,4 +383,3 @@ function rotateQuotes() {
 }
 
 rotateQuotes();
-
